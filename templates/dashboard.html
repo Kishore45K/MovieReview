@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+
+    <h1 class="title">Movie Dashboard</h1>
+
+    <div class="grid">
+        {% for m in movies %}
+
+        <div class="card">
+            <img src="{{url_for('static',filename=m.image)}}" alt="Movie Posters">
+            <h2>{{m.title}}</h2>
+            
+            <div class="booking">
+                <label>Seat</label>
+                <input type="number" min="1" max="10" value="1">
+                <button onclick="Book('{{m.title}}')">Book</button>
+            </div>
+
+            <div class="extra-btn">
+                <button onclick="Details('{{m.title}}')">Details</button>
+                <button onclick="Favorite('{{m.title}}')">Add To Favorite</button>
+                <button onclick="Trailer('{{m.title}}')">Watch Trailer</button>
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+        <div class="button">
+            <a href="/recommender"> <button class="btn">Go To Recommender</button></a>
+        </div>
+
+
+    <script src="/static/script.js"></script>
+
+</body>
+</html>
